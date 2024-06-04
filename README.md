@@ -1,2 +1,0 @@
-# PraticaS11L2
- 

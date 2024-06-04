@@ -1,0 +1,58 @@
+<form [formGroup]="form">
+  <div class="form-group my-2">
+    <input type="text" formControlName="nome"
+    class="form-control" placeholder="Il tuo nome">
+    <span *ngIf="isTouchedInvalid('nome')">Devi inserire il nome</span>
+  </div>
+  <div class="form-group my-2">
+    <input type="text" formControlName="cognome"
+    class="form-control" placeholder="Il tuo cognome">
+    <span *ngIf="isTouchedInvalid('cognome')">Devi inserire il cognome</span>
+  </div>
+  <div class="form-group my-2">
+    <input type="email" formControlName="email"
+    class="form-control" placeholder="La tua email">
+    <span *ngIf="isTouchedInvalid('email')">Email non valida</span>
+  </div>
+  <div class="form-group my-2">
+    <input type="text" formControlName="username"
+    class="form-control" placeholder="Il tuo username">
+    <span *ngIf="isTouchedInvalid('username')">Devi inserire lo username</span>
+  </div>
+  <div class="form-group my-2">
+    <label for="biografia">Biografia</label>
+    <textarea formControlName="biografia" id="biografia" class="form-control" placeholder="La tua biografia"></textarea>
+    <span *ngIf="isTouchedInvalid('biografia')">Devi inserire la biografia</span>
+  </div>
+  <div class="form-group my-2">
+    <label for="genere">Genere</label>
+    <select formControlName="genere" class="form-control">
+      <option value="" disabled>---Scegli---</option>
+      <option *ngFor="let genere of generi" [value]="genere">{{genere}}</option>
+    </select>
+    <span *ngIf="isGenereInvalid('genere')">Scegli un genere</span>
+  </div>
+  <div class="form-group my-2">
+    <label for="immagine">Immagine profilo</label><br>
+    <input type="file" id="immagine" formControlName="immagine"
+    class="form-control-file">
+    <span *ngIf="isImgInvalid()">Inserisci l'immagine del profilo</span>
+  </div>
+  <div formGroupName="authData" class="form-row row my-2">
+    <div class="form-group col-6">
+      <input type="password" formControlName="password"
+      class="form-control" placeholder="La tua password">
+    </div>
+    <div class="form-group col-6 my-2">
+      <input type="password" formControlName="confirmPassword"
+      class="form-control" placeholder="Ripeti password">
+    </div>
+    <span *ngIf="isTouchedInvalid('authData')">Dati non corretti</span>
+    <span *ngIf="passwordsDoNotMatch()">Le due password non coincidono</span>
+  </div>
+  <div class="row">
+    <div class="col text-center">
+      <button type="button " (click)="invia()" class="btn btn-success my-2 ">Invia Dati</button>
+    </div>
+  </div>
+</form>
